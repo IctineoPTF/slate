@@ -285,10 +285,6 @@
       <div class="content">
         <h1 id='introduccion'>Introducción</h1><h1 id='autenticacion'>Autenticación</h1>
 <p>En la autentificación se utilizan mensajes en clave-hash (HMAC) es una construcción específica para calcular un código de autentificación de mensaje, esto que implica una función hash criptográfica en combinación con una llave criptográfica secreta. Como cualquier MAC, puede ser utilizado para verificar simultáneamente la integridad de los datos y la autentificación de un mensaje. Se utiliza la función hash criptográfica SHA-512. La función hash rompe un mensaje en un bloque de un tamaño fijo e itera sobre ellos con una función de compresión. La fuerza criptográfica del HMAC depende de la potencia criptográfica de la función de hash subyacente, el tamaño de su salida de hash y el tamaño y calidad de la llave.</p>
-
-<blockquote>
-<p>Para autorizar utiliza este codigo:</p>
-</blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getPath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">pathRegex</span> <span class="o">=</span> <span class="sr">/.+</span><span class="se">?\:\/\/</span><span class="sr">.+</span><span class="se">?(\/</span><span class="sr">.+</span><span class="se">?)(?:</span><span class="sr">#|</span><span class="se">\?</span><span class="sr">|$</span><span class="se">)</span><span class="sr">/</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">pathRegex</span><span class="p">);</span>
@@ -328,6 +324,10 @@
 <span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmacAuthHeader</span><span class="dl">'</span><span class="p">,</span> <span class="nx">getAuthHeader</span><span class="p">(</span><span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">]));</span>
 <span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmac_d</span><span class="dl">'</span><span class="p">,</span><span class="nx">_requestData</span><span class="p">);</span>
 </code></pre></div>
+<blockquote>
+<p>Para autorizar utiliza este codigo:</p>
+</blockquote>
+
 <!-- 
 // > Make sure to replace `meowmeowmeow` with your API key.
 
