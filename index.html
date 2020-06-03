@@ -222,12 +222,12 @@
           </li>
           <li>
             <a href="#autenticacion" class="toc-h1 toc-link" data-title="Autenticación">Autenticación</a>
-          </li>
-          <li>
-            <a href="#clientes" class="toc-h1 toc-link" data-title="Clientes">Clientes</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creacion-de-cliente" class="toc-h2 toc-link" data-title="Creación de cliente">Creación de cliente</a>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+                  <li>
+                    <a href="#envio-de-parametros" class="toc-h2 toc-link" data-title="Envío de parametros">Envío de parametros</a>
                   </li>
                   <li>
                     <a href="#consulta-de-cliente" class="toc-h2 toc-link" data-title="Consulta de cliente">Consulta de cliente</a>
@@ -289,27 +289,68 @@
 <blockquote>
 <p>Para autorizar utiliza este codigo:</p>
 </blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getPath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pathRegex</span> <span class="o">=</span> <span class="sr">/.+</span><span class="se">?\:\/\/</span><span class="sr">.+</span><span class="se">?(\/</span><span class="sr">.+</span><span class="se">?)(?:</span><span class="sr">#|</span><span class="se">\?</span><span class="sr">|$</span><span class="se">)</span><span class="sr">/</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">pathRegex</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span> <span class="o">&amp;&amp;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="dl">''</span><span class="p">;</span> 
+<span class="p">}</span>
 
-<!-- ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+<span class="kd">function</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">arrSplit</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">?</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">arrSplit</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">?</span><span class="dl">'</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="dl">''</span><span class="p">;</span> 
+<span class="p">}</span>
 
-> Make sure to replace `meowmeowmeow` with your API key.
+<span class="kd">var</span> <span class="nx">_requestData</span><span class="p">;</span>
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+<span class="kd">function</span> <span class="nx">getAuthHeader</span><span class="p">(</span><span class="nx">httpMethod</span><span class="p">,</span> <span class="nx">requestUrl</span><span class="p">,</span> <span class="nx">_requestBody</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">CLIENT_KEY</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">CLIENT_KEY</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">hash</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">SECRET_KEY</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">SECRET_KEY</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Hex</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">SHA512</span><span class="p">(</span><span class="nx">hash</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">AUTH_TYPE</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Ictineo</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">requestBody</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">requestPath</span> <span class="o">=</span> <span class="nx">getPath</span><span class="p">(</span><span class="nx">requestUrl</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">queryString</span> <span class="o">=</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">requestUrl</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">httpMethod</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span> <span class="o">||</span> <span class="o">!</span><span class="nx">_requestBody</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">requestBody</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span> 
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="nx">requestBody</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">_requestBody</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+<span class="kd">var</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span> 
+<span class="kd">var</span> <span class="nx">requestData</span> <span class="o">=</span> <span class="p">[</span><span class="nx">timestamp</span><span class="p">,</span><span class="nx">httpMethod</span><span class="p">,</span> <span class="nx">requestPath</span><span class="p">,</span> <span class="nx">queryString</span><span class="p">,</span> <span class="nx">requestBody</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+<span class="nx">requestData</span> <span class="o">=</span> <span class="nx">requestData</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+<span class="nx">_requestData</span> <span class="o">=</span> <span class="nx">requestData</span><span class="p">;</span>
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside> -->
-<h1 id='clientes'>Clientes</h1><h2 id='creacion-de-cliente'>Creación de cliente</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/clients"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
+
+<span class="kd">var</span> <span class="nx">hmacDigest</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Hex</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacSHA256</span><span class="p">(</span><span class="nx">requestData</span><span class="p">,</span> <span class="nx">SECRET_KEY</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">authHeader</span> <span class="o">=</span> <span class="nx">AUTH_TYPE</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">CLIENT_KEY</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="o">+</span> <span class="nx">timestamp</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">:</span><span class="dl">"</span>  <span class="o">+</span> <span class="nx">hmacDigest</span><span class="p">;</span>
+<span class="k">return</span> <span class="nx">authHeader</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmacAuthHeader</span><span class="dl">'</span><span class="p">,</span> <span class="nx">getAuthHeader</span><span class="p">(</span><span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">]));</span>
+<span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmac_d</span><span class="dl">'</span><span class="p">,</span><span class="nx">_requestData</span><span class="p">);</span>
+
+<span class="c1">// &gt; Make sure to replace `meowmeowmeow` with your API key.</span>
+
+<span class="c1">// Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).</span>
+
+<span class="c1">// Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</span>
+
+<span class="c1">// `Authorization: meowmeowmeow`</span>
+
+<span class="c1">// &lt;aside class="notice"&gt;</span>
+<span class="c1">// You must replace &lt;code&gt;meowmeowmeow&lt;/code&gt; with your personal API key.</span>
+<span class="c1">// &lt;/aside&gt; </span>
+
+<span class="err">#</span> <span class="nx">Clientes</span>
+
+<span class="err">##</span> <span class="nx">Creaci</span><span class="err">ó</span><span class="nx">n</span> <span class="nx">de</span> <span class="nx">cliente</span>
+
+<span class="s2">```shell
+curl "https://dev.ictineo.com/clients"
+  -H "Authorization: token"
+</span></code></pre></div>
 <blockquote>
 <p>El comando anterior devuelve un JSON estructurado como:</p>
 </blockquote>
