@@ -222,12 +222,12 @@
           </li>
           <li>
             <a href="#autenticacion" class="toc-h1 toc-link" data-title="Autenticación">Autenticación</a>
+          </li>
+          <li>
+            <a href="#clientes" class="toc-h1 toc-link" data-title="Clientes">Clientes</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
-                  </li>
-                  <li>
-                    <a href="#envio-de-parametros" class="toc-h2 toc-link" data-title="Envío de parametros">Envío de parametros</a>
+                    <a href="#creacion-de-cliente" class="toc-h2 toc-link" data-title="Creación de cliente">Creación de cliente</a>
                   </li>
                   <li>
                     <a href="#consulta-de-cliente" class="toc-h2 toc-link" data-title="Consulta de cliente">Consulta de cliente</a>
@@ -330,27 +330,22 @@
 
 <span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmacAuthHeader</span><span class="dl">'</span><span class="p">,</span> <span class="nx">getAuthHeader</span><span class="p">(</span><span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">]));</span>
 <span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmac_d</span><span class="dl">'</span><span class="p">,</span><span class="nx">_requestData</span><span class="p">);</span>
+</code></pre></div>
+<!-- 
+// > Make sure to replace `meowmeowmeow` with your API key.
 
-<span class="c1">// &gt; Make sure to replace `meowmeowmeow` with your API key.</span>
+// Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
 
-<span class="c1">// Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).</span>
+// Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-<span class="c1">// Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</span>
+// `Authorization: meowmeowmeow`
 
-<span class="c1">// `Authorization: meowmeowmeow`</span>
-
-<span class="c1">// &lt;aside class="notice"&gt;</span>
-<span class="c1">// You must replace &lt;code&gt;meowmeowmeow&lt;/code&gt; with your personal API key.</span>
-<span class="c1">// &lt;/aside&gt; </span>
-
-<span class="err">#</span> <span class="nx">Clientes</span>
-
-<span class="err">##</span> <span class="nx">Creaci</span><span class="err">ó</span><span class="nx">n</span> <span class="nx">de</span> <span class="nx">cliente</span>
-
-<span class="s2">```shell
-curl "https://dev.ictineo.com/clients"
-  -H "Authorization: token"
-</span></code></pre></div>
+// <aside class="notice">
+// You must replace <code>meowmeowmeow</code> with your personal API key.
+// </aside>  -->
+<h1 id='clientes'>Clientes</h1><h2 id='creacion-de-cliente'>Creación de cliente</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/clients"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
+</code></pre></div>
 <blockquote>
 <p>El comando anterior devuelve un JSON estructurado como:</p>
 </blockquote>
