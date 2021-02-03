@@ -218,26 +218,16 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#clabes" class="toc-h1 toc-link" data-title="Clabes">Clabes</a>
+            <a href="#stp" class="toc-h1 toc-link" data-title="STP">STP</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-a-clabe-account-physical-accounts" class="toc-h2 toc-link" data-title="Create a CLABE account (Physical accounts)">Create a CLABE account (Physical accounts)</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#transfers" class="toc-h1 toc-link" data-title="Transfers">Transfers</a>
-              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#webhook-to-create-a-clabe-account" class="toc-h2 toc-link" data-title="Webhook to create a CLABE account">Webhook to create a CLABE account</a>
+                  </li>
                   <li>
                     <a href="#spei-out" class="toc-h2 toc-link" data-title="SPEI OUT">SPEI OUT</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#create-a-clabe-account" class="toc-h2 toc-link" data-title="Create a CLABE account">Create a CLABE account</a>
                   </li>
               </ul>
           </li>
@@ -311,7 +301,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 // <aside class="notice">
 // You must replace <code>meowmeowmeow</code> with your personal API key.
 // </aside>  -->
-<h1 id='clabes'>Clabes</h1><h2 id='create-a-clabe-account-physical-accounts'>Create a CLABE account (Physical accounts)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
+<h1 id='stp'>STP</h1><h2 id='create-a-clabe-account-physical-accounts'>Create a CLABE account (Physical accounts)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">enterprise_id</span><span class="o">=</span><span class="s2">"6c4a-ye2y-23h2-y38g"</span> <span class="se">\</span>
@@ -405,7 +395,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>gender</td>
 <td>N</td>
 <td>String</td>
-<td>Gender type of the physical person. Male -&gt; H, Female -&gt; M</td>
+<td>Gender type of the physical person. Values: Male -&gt; H, Female -&gt; M</td>
 <td>H</td>
 </tr>
 <tr>
@@ -500,11 +490,51 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>5513673221</td>
 </tr>
 </tbody></table>
+<h2 id='webhook-to-create-a-clabe-account'>Webhook to create a CLABE account</h2>
+<!-- ```shell
+curl "https://dev.ictineo.com/clients/0001001131"
+  -H "Authorization: token"
+``` -->
 
-<!-- <aside class="warning">
-Remember — a happy kitten is an authenticated kitten!
-</aside> -->
-<h1 id='transfers'>Transfers</h1><h2 id='spei-out'>SPEI OUT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
+<!-- 
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let max = api.kittens.get(2);
+``` -->
+
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used for STP to notify the status of the account, You should implement an endpoint like this.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='attributes'>Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clabe</td>
+<td>String</td>
+<td>CLABE account number assigned</td>
+<td>646420123300000000</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>The status type of the CLABE account. Values: Active -&gt; 1, Inactive -&gt; 0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<h2 id='spei-out'>SPEI OUT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">payer_account</span><span class="o">=</span><span class="s2">"646420123300000000"</span> <span class="se">\</span>
@@ -619,41 +649,6 @@ Remember — a happy kitten is an authenticated kitten!
 <td>String</td>
 <td>Company Name</td>
 <td>ICTINEO</td>
-</tr>
-</tbody></table>
-
-<!-- <aside class="warning">
-Remember — a happy kitten is an authenticated kitten!
-</aside> -->
-<h1 id='webhooks'>Webhooks</h1><h2 id='create-a-clabe-account'>Create a CLABE account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/clients/0001001131"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<!-- 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-``` -->
-
-<blockquote>
-<p>RESPONSE</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span></code></pre></div>
-<p>This endpoint is used for STP to notify the status of the account, You should implement an endpoint like this.</p>
-
-<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
-<h3 id='attributes'>Attributes</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>client_number</td>
-<td>El numero de cliente que se quiere consultar.</td>
 </tr>
 </tbody></table>
 
