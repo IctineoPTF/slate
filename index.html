@@ -218,60 +218,26 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduccion" class="toc-h1 toc-link" data-title="Introducción">Introducción</a>
-          </li>
-          <li>
-            <a href="#autenticacion" class="toc-h1 toc-link" data-title="Autenticación">Autenticación</a>
-          </li>
-          <li>
-            <a href="#clientes" class="toc-h1 toc-link" data-title="Clientes">Clientes</a>
+            <a href="#clabes" class="toc-h1 toc-link" data-title="Clabes">Clabes</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creacion-de-cliente" class="toc-h2 toc-link" data-title="Creación de cliente">Creación de cliente</a>
-                  </li>
-                  <li>
-                    <a href="#consulta-de-cliente" class="toc-h2 toc-link" data-title="Consulta de cliente">Consulta de cliente</a>
+                    <a href="#create-a-clabe-account-physical-accounts" class="toc-h2 toc-link" data-title="Create a CLABE account (Physical accounts)">Create a CLABE account (Physical accounts)</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#cuentas" class="toc-h1 toc-link" data-title="Cuentas">Cuentas</a>
+            <a href="#transfers" class="toc-h1 toc-link" data-title="Transfers">Transfers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creacion-de-cuenta" class="toc-h2 toc-link" data-title="Creación de cuenta">Creación de cuenta</a>
-                  </li>
-                  <li>
-                    <a href="#consulta-de-saldo" class="toc-h2 toc-link" data-title="Consulta de saldo">Consulta de saldo</a>
-                  </li>
-                  <li>
-                    <a href="#consulta-de-transacciones" class="toc-h2 toc-link" data-title="Consulta de transacciones">Consulta de transacciones</a>
+                    <a href="#spei-out" class="toc-h2 toc-link" data-title="SPEI OUT">SPEI OUT</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#tarjetas" class="toc-h1 toc-link" data-title="Tarjetas">Tarjetas</a>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#asignacion-de-tarjeta" class="toc-h2 toc-link" data-title="Asignación de tarjeta">Asignación de tarjeta</a>
-                  </li>
-                  <li>
-                    <a href="#cambio-de-estatus" class="toc-h2 toc-link" data-title="Cambio de estatus">Cambio de estatus</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#transferencias" class="toc-h1 toc-link" data-title="Transferencias">Transferencias</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#generar-transferencia" class="toc-h2 toc-link" data-title="Generar transferencia">Generar transferencia</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#catalogos" class="toc-h1 toc-link" data-title="Catalogos">Catalogos</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#general" class="toc-h2 toc-link" data-title="General">General</a>
+                    <a href="#create-a-clabe-account" class="toc-h2 toc-link" data-title="Create a CLABE account">Create a CLABE account</a>
                   </li>
               </ul>
           </li>
@@ -283,51 +249,56 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduccion'>Introducción</h1><h1 id='autenticacion'>Autenticación</h1>
-<p>En la autentificación se utilizan mensajes en clave-hash (HMAC) es una construcción específica para calcular un código de autentificación de mensaje, esto que implica una función hash criptográfica en combinación con una llave criptográfica secreta. Como cualquier MAC, puede ser utilizado para verificar simultáneamente la integridad de los datos y la autentificación de un mensaje. Se utiliza la función hash criptográfica SHA-512. La función hash rompe un mensaje en un bloque de un tamaño fijo e itera sobre ellos con una función de compresión. La fuerza criptográfica del HMAC depende de la potencia criptográfica de la función de hash subyacente, el tamaño de su salida de hash y el tamaño y calidad de la llave.</p>
+        <!-- # Introducción
 
-<blockquote>
-<p>Para autorizar utiliza este codigo:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getPath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">pathRegex</span> <span class="o">=</span> <span class="sr">/.+</span><span class="se">?\:\/\/</span><span class="sr">.+</span><span class="se">?(\/</span><span class="sr">.+</span><span class="se">?)(?:</span><span class="sr">#|</span><span class="se">\?</span><span class="sr">|$</span><span class="se">)</span><span class="sr">/</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">pathRegex</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">result</span> <span class="o">&amp;&amp;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="dl">''</span><span class="p">;</span> 
-<span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">arrSplit</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">?</span><span class="dl">'</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">arrSplit</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">?</span><span class="dl">'</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="dl">''</span><span class="p">;</span> 
-<span class="p">}</span>
+# Autenticación
 
-<span class="kd">var</span> <span class="nx">_requestData</span><span class="p">;</span>
+En la autentificación se utilizan mensajes en clave-hash (HMAC) es una construcción específica para calcular un código de autentificación de mensaje, esto que implica una función hash criptográfica en combinación con una llave criptográfica secreta. Como cualquier MAC, puede ser utilizado para verificar simultáneamente la integridad de los datos y la autentificación de un mensaje. Se utiliza la función hash criptográfica SHA-512. La función hash rompe un mensaje en un bloque de un tamaño fijo e itera sobre ellos con una función de compresión. La fuerza criptográfica del HMAC depende de la potencia criptográfica de la función de hash subyacente, el tamaño de su salida de hash y el tamaño y calidad de la llave.
 
-<span class="kd">function</span> <span class="nx">getAuthHeader</span><span class="p">(</span><span class="nx">httpMethod</span><span class="p">,</span> <span class="nx">requestUrl</span><span class="p">,</span> <span class="nx">_requestBody</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">CLIENT_KEY</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">CLIENT_KEY</span><span class="dl">'</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">hash</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">SECRET_KEY</span><span class="dl">'</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">SECRET_KEY</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Hex</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">SHA512</span><span class="p">(</span><span class="nx">hash</span><span class="p">));</span>
-    <span class="kd">var</span> <span class="nx">AUTH_TYPE</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Ictineo</span><span class="dl">'</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">requestBody</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">requestPath</span> <span class="o">=</span> <span class="nx">getPath</span><span class="p">(</span><span class="nx">requestUrl</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">queryString</span> <span class="o">=</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">requestUrl</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">httpMethod</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span> <span class="o">||</span> <span class="o">!</span><span class="nx">_requestBody</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">requestBody</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span> 
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">requestBody</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">_requestBody</span><span class="p">)</span> <span class="p">);</span>
-    <span class="p">}</span>
+> Para autorizar utiliza este codigo:
 
-    <span class="kd">var</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span> 
-    <span class="kd">var</span> <span class="nx">requestData</span> <span class="o">=</span> <span class="p">[</span><span class="nx">timestamp</span><span class="p">,</span><span class="nx">httpMethod</span><span class="p">,</span> <span class="nx">requestPath</span><span class="p">,</span> <span class="nx">queryString</span><span class="p">,</span> <span class="nx">requestBody</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
-    <span class="nx">requestData</span> <span class="o">=</span> <span class="nx">requestData</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
-    <span class="nx">_requestData</span> <span class="o">=</span> <span class="nx">requestData</span><span class="p">;</span>        
-    <span class="kd">var</span> <span class="nx">hmacDigest</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Hex</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacSHA256</span><span class="p">(</span><span class="nx">requestData</span><span class="p">,</span> <span class="nx">SECRET_KEY</span><span class="p">));</span>
-    <span class="kd">var</span> <span class="nx">authHeader</span> <span class="o">=</span> <span class="nx">AUTH_TYPE</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">CLIENT_KEY</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="o">+</span> <span class="nx">timestamp</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">:</span><span class="dl">"</span>  <span class="o">+</span> <span class="nx">hmacDigest</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">authHeader</span><span class="p">;</span>
-<span class="p">}</span>
+```javascript
+function getPath(url) {
+    var pathRegex = /.+?\:\/\/.+?(\/.+?)(?:#|\?|$)/;
+    var result = url.match(pathRegex);
+    return result && result.length > 1 ? result[1] : ''; 
+}
 
-<span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmacAuthHeader</span><span class="dl">'</span><span class="p">,</span> <span class="nx">getAuthHeader</span><span class="p">(</span><span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">],</span> <span class="nx">request</span><span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">]));</span>
-<span class="nx">postman</span><span class="p">.</span><span class="nx">setEnvironmentVariable</span><span class="p">(</span><span class="dl">'</span><span class="s1">hmac_d</span><span class="dl">'</span><span class="p">,</span><span class="nx">_requestData</span><span class="p">);</span>
-</code></pre></div>
+function getQueryString(url) {
+    var arrSplit = url.split('?');
+    return arrSplit.length > 1 ? url.substring(url.indexOf('?')+1) : ''; 
+}
+
+var _requestData;
+
+function getAuthHeader(httpMethod, requestUrl, _requestBody) {
+    var CLIENT_KEY = 'CLIENT_KEY';
+    var hash = 'SECRET_KEY';
+    var SECRET_KEY = CryptoJS.enc.Hex.stringify(CryptoJS.SHA512(hash));
+    var AUTH_TYPE = 'Ictineo';
+    var requestBody = '';
+    var requestPath = getPath(requestUrl);
+    var queryString = getQueryString(requestUrl);
+    if (httpMethod == 'GET' || !_requestBody) {
+        requestBody = ''; 
+    } else {
+        requestBody = JSON.stringify(JSON.parse(_requestBody) );
+    }
+        
+    var timestamp = new Date().getTime(); 
+    var requestData = [timestamp,httpMethod, requestPath, queryString, requestBody].join("");
+    requestData = requestData.trim();
+    _requestData = requestData;        
+    var hmacDigest = CryptoJS.enc.Hex.stringify(CryptoJS.HmacSHA256(requestData, SECRET_KEY));
+    var authHeader = AUTH_TYPE + ' ' + CLIENT_KEY + ':'+ timestamp + ":"  + hmacDigest;
+    return authHeader;
+}
+
+postman.setEnvironmentVariable('hmacAuthHeader', getAuthHeader(request['method'], request['url'], request['data']));
+postman.setEnvironmentVariable('hmac_d',_requestData);
+``` -->
+
 <!-- 
 // > Make sure to replace `meowmeowmeow` with your API key.
 
@@ -340,167 +311,321 @@
 // <aside class="notice">
 // You must replace <code>meowmeowmeow</code> with your personal API key.
 // </aside>  -->
-<h1 id='clientes'>Clientes</h1><h2 id='creacion-de-cliente'>Creación de cliente</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/clients"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
+<h1 id='clabes'>Clabes</h1><h2 id='create-a-clabe-account-physical-accounts'>Create a CLABE account (Physical accounts)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">enterprise_id</span><span class="o">=</span><span class="s2">"6c4a-ye2y-23h2-y38g"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">account_id</span><span class="o">=</span><span class="s2">"232313223"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"Enrique"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">last_name</span><span class="o">=</span><span class="s2">"Martinez"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">second_lastname</span><span class="o">=</span><span class="s2">"Gomez"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">birth_date</span><span class="o">=</span><span class="s2">"19860228"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">gender</span><span class="o">=</span><span class="s2">"H"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">rfc_or_curp</span><span class="o">=</span><span class="s2">"MAGL860228TF3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">federal_entity</span><span class="o">=</span><span class="s2">"1"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">economy_activity</span><span class="o">=</span><span class="s2">"30"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">personal_id</span><span class="o">=</span><span class="s2">"3313476042"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">street</span><span class="o">=</span><span class="s2">"Polanco"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">outdoor_number</span><span class="o">=</span><span class="s2">"254"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">interior_number</span><span class="o">=</span><span class="s2">"1"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">suburb</span><span class="o">=</span><span class="s2">"Lomas de chapultepec"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">municipality</span><span class="o">=</span><span class="s2">"Miguel Hidalgo"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">zip_code</span><span class="o">=</span><span class="s2">"01100"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">country_of_birth</span><span class="o">=</span><span class="s2">"1"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span><span class="s2">"enrique@medici-satoshi.com"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">phone</span><span class="o">=</span><span class="s2">"5513673221"</span>
 </code></pre></div>
 <blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
+<p>RESPONSE</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"numcte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001001131"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"respcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"resptext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cliente nuevo:TEGC8810102I1"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-03T19:53:04.055+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/stp/clabes"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Endpoint para creación de clientes</p>
+<p>This endpoint is used to create CLABE account(Physical accounts).</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://dev.ictineo.com/clients</code></p>
-<h3 id='envio-de-parametros'>Envío de parametros</h3>
+<p><code>POST https://stp.ictineoptf.com/v1/stp/clabes</code></p>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
-<td>si</td>
-<td>Nombre</td>
+<td>enterprise_id</td>
+<td>Y</td>
+<td>String</td>
+<td>Identifier of the company to which the CLABE account</td>
+<td>6c4a-ye2y-23h2-y38g</td>
 </tr>
 <tr>
-<td>second_name</td>
-<td>si</td>
-<td>Segundo nombre</td>
+<td>account_id</td>
+<td>Y</td>
+<td>String</td>
+<td>Account number identifier</td>
+<td>232313223</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Y</td>
+<td>String</td>
+<td>Full name of the physical person</td>
+<td>Enrique</td>
 </tr>
 <tr>
 <td>last_name</td>
-<td>si</td>
-<td>Apellido paterno</td>
+<td>Y</td>
+<td>String</td>
+<td>Paternal surname of the physical person</td>
+<td>Martinez</td>
 </tr>
 <tr>
 <td>second_lastname</td>
-<td>si</td>
-<td>Apellido materno</td>
+<td>C</td>
+<td>String</td>
+<td>Maternal surname of the physical person</td>
+<td>Gomez</td>
 </tr>
 <tr>
-<td>phone</td>
-<td>si</td>
-<td>Telefono a 10 digitos</td>
-</tr>
-<tr>
-<td>date_birth</td>
-<td>si</td>
-<td>Fecha de nacimiento MM/DD/YYYY</td>
+<td>birth_date</td>
+<td>Y</td>
+<td>String</td>
+<td>Birthdate</td>
+<td>19860228</td>
 </tr>
 <tr>
 <td>gender</td>
-<td>si</td>
-<td>Genero - F := Femenino, M := Masculino</td>
+<td>N</td>
+<td>String</td>
+<td>Gender type of the physical person. Male -&gt; H, Female -&gt; M</td>
+<td>H</td>
 </tr>
 <tr>
-<td>country_of_birth_id</td>
-<td>si</td>
-<td>Id del pais de nacimiento, consultar catalogo</td>
+<td>rfc_or_curp</td>
+<td>Y</td>
+<td>String</td>
+<td>The RFC or CURP of the physical person</td>
+<td>MAGL860228TF3</td>
 </tr>
 <tr>
-<td>nationality_id</td>
-<td>si</td>
-<td>Id de nacionalidad</td>
+<td>federal_entity</td>
+<td>Y</td>
+<td>String</td>
+<td>Federal entity identifier. Federative Entities Catalog</td>
+<td>1</td>
 </tr>
 <tr>
-<td>place_of_birth_id</td>
-<td>si</td>
-<td>Id de lugar de nacimiento</td>
+<td>economy_activity</td>
+<td>Y</td>
+<td>String</td>
+<td>Economic activity. Catalog of Economic Activities</td>
+<td>30</td>
 </tr>
 <tr>
-<td>curp</td>
-<td>si</td>
-<td>CURP</td>
-</tr>
-<tr>
-<td>civil_status</td>
-<td>si</td>
-<td>Estatus Civil</td>
-</tr>
-<tr>
-<td>profession_id</td>
-<td>si</td>
-<td>Id de profesión</td>
-</tr>
-<tr>
-<td>occupation_id</td>
-<td>si</td>
-<td>Id de ocupación</td>
-</tr>
-<tr>
-<td>economy_activity_id</td>
-<td>si</td>
-<td>Id de actividad economica</td>
-</tr>
-<tr>
-<td>education_id</td>
-<td>si</td>
-<td>Educación</td>
-</tr>
-<tr>
-<td>main_activity_id</td>
-<td>si</td>
-<td>Id de principal actividad economica</td>
+<td>personal_id</td>
+<td>N</td>
+<td>String</td>
+<td>Identification(INE / IFE), Identity card(CI), Citizenship card(CC)</td>
+<td>3313476042</td>
 </tr>
 <tr>
 <td>street</td>
-<td>si</td>
-<td>Calle de dirección</td>
+<td>N</td>
+<td>String</td>
+<td>Street of the address of the physical person</td>
+<td>Polanco</td>
 </tr>
 <tr>
-<td>number</td>
-<td>si</td>
-<td>Numero exterior de dirección</td>
+<td>outdoor_number</td>
+<td>N</td>
+<td>String</td>
+<td>External number of the address of the physical person</td>
+<td>254</td>
 </tr>
 <tr>
-<td>apartment_number</td>
-<td>si</td>
-<td>Numero interior de dirección</td>
+<td>interior_number</td>
+<td>N</td>
+<td>String</td>
+<td>Internal number of the address of the physical person</td>
+<td>1</td>
 </tr>
 <tr>
-<td>postal_code</td>
-<td>si</td>
-<td>Codigo postal</td>
+<td>suburb</td>
+<td>N</td>
+<td>String</td>
+<td>Suburb of the address of the physical person</td>
+<td>Lomas de chapultepec</td>
 </tr>
 <tr>
-<td>suburb_id</td>
-<td>si</td>
-<td>Id de colonia</td>
+<td>municipality</td>
+<td>N</td>
+<td>String</td>
+<td>Municipality of the address of the physical person</td>
+<td>Miguel Hidalgo</td>
 </tr>
 <tr>
-<td>city_id</td>
-<td>si</td>
-<td>Id de ciudad</td>
+<td>zip_code</td>
+<td>N</td>
+<td>String</td>
+<td>Postal Code of the address of the natural person</td>
+<td>01100</td>
 </tr>
 <tr>
-<td>state_id</td>
-<td>si</td>
-<td>Id de estado</td>
+<td>country_of_birth</td>
+<td>Y</td>
+<td>String</td>
+<td>Country of birth. Country of birth catalog</td>
+<td>187</td>
 </tr>
 <tr>
-<td>country_id</td>
-<td>si</td>
-<td>Id de pais</td>
+<td>email</td>
+<td>N</td>
+<td>String</td>
+<td>Email of the physical person</td>
+<td>enrique@medici-satoshi.com</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>N</td>
+<td>String</td>
+<td>Phone number of the physical person</td>
+<td>5513673221</td>
 </tr>
 </tbody></table>
 
-<!-- <aside class="success">
+<!-- <aside class="warning">
 Remember — a happy kitten is an authenticated kitten!
 </aside> -->
-<h2 id='consulta-de-cliente'>Consulta de cliente</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/clients/0001001131"</span>
+<h1 id='transfers'>Transfers</h1><h2 id='spei-out'>SPEI OUT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">payer_account</span><span class="o">=</span><span class="s2">"646420123300000000"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">beneficiary_name</span><span class="o">=</span><span class="s2">"LUIS TRUTIE RODRIGUEZ"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">beneficiary_account</span><span class="o">=</span><span class="s2">"012180029588856995"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">beneficiary_account_type</span><span class="o">=</span><span class="s2">"40"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">counterpart_institution</span><span class="o">=</span><span class="s2">"40012"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">beneficiary_rfc_curp</span><span class="o">=</span><span class="s2">"ND"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">amount</span><span class="o">=</span>5.04 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">payment_concept</span><span class="o">=</span><span class="s2">"Envio de SPEI"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">numeric_reference</span><span class="o">=</span><span class="s2">"12345"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">tracking_key</span><span class="o">=</span><span class="s2">"ICTINEO000000001"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">enterprise</span><span class="o">=</span><span class="s2">"ICTINEO"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-03T19:53:04.055+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/stp/clabes"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to register an order to SPEI out</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://stp.ictineoptf.com/v1/stp/transfer</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payer_account</td>
+<td>Y</td>
+<td>String</td>
+<td>The payer account</td>
+<td>646420123300000000</td>
+</tr>
+<tr>
+<td>beneficiary_name</td>
+<td>Y</td>
+<td>String</td>
+<td>The name of the beneficiary of the payment order</td>
+<td>LUIS TRUTIE RODRIGUEZ</td>
+</tr>
+<tr>
+<td>beneficiary_account</td>
+<td>Y</td>
+<td>String</td>
+<td>The beneficiary account</td>
+<td>012180029588856995</td>
+</tr>
+<tr>
+<td>beneficiary_account_type</td>
+<td>Y</td>
+<td>String</td>
+<td>The key of the beneficiary account type. Catalog Type Account</td>
+<td>40</td>
+</tr>
+<tr>
+<td>counterpart_institution</td>
+<td>Y</td>
+<td>String</td>
+<td>The key of the institution to which the payment is directed. Catalog of Institutions</td>
+<td>40012</td>
+</tr>
+<tr>
+<td>beneficiary_rfc_curp</td>
+<td>Y</td>
+<td>String</td>
+<td>The RFC or CURP of the beneficiary</td>
+<td>ND</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Y</td>
+<td>String</td>
+<td>The maximum amount per money order transfer order is: 999999999999.99</td>
+<td>5.04</td>
+</tr>
+<tr>
+<td>payment_concept</td>
+<td>Y</td>
+<td>String</td>
+<td>The reason for the payment to the beneficiary customer</td>
+<td>Envio de SPEI</td>
+</tr>
+<tr>
+<td>numeric_reference</td>
+<td>Y</td>
+<td>String</td>
+<td>A numerical reference associated with the payment</td>
+<td>12345</td>
+</tr>
+<tr>
+<td>tracking_key</td>
+<td>Y</td>
+<td>String</td>
+<td>Tracking key associated with the payment order. It must be unique per operation</td>
+<td>ICTINEO000000001</td>
+</tr>
+<tr>
+<td>enterprise</td>
+<td>Y</td>
+<td>String</td>
+<td>Company Name</td>
+<td>ICTINEO</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="warning">
+Remember — a happy kitten is an authenticated kitten!
+</aside> -->
+<h1 id='webhooks'>Webhooks</h1><h2 id='create-a-clabe-account'>Create a CLABE account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/clients/0001001131"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
 </code></pre></div>
 <!-- 
@@ -512,110 +637,17 @@ let max = api.kittens.get(2);
 ``` -->
 
 <blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
+<p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"codret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numcte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001001131"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sucursal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ejecutivo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usuponic"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tp_persona"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tp_cliente"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"apell_pat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELGADO"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"apell_mat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SANCHEZ"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nombre1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOSE JHONATTAN"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nombre2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rfc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DESJ830127UBA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"segmento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"actividad_princ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"grupo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"subgrupo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"residencia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"apell_casada"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numcte_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"distrito"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"puesto_ppes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"familiar_ppes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"actividad_esp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999999"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"fecha_nac"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27/01/1983"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"lugar_nac"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nacionalidad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"fm3"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"estado_civil"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"regimen_mat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"profesion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sexo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"curp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DESJ830127HZSLNH04"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"codidentif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numidentif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0211045936150"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"no_imss"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"dependientes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tutor"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nom_conyuge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seguro_defunc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"escolaridad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"habita_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"anios_habita"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nombre_prop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"imphiporenta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numeroife"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numerotutor"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numeroconyuge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ejecut_autoriza"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"valor_inmueble"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"renta_mensual"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sindicato"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sindicalizado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cta_bancaria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cod_cta_bancari"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"meses_habita"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"buro_cred"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numcta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"fam_financiera"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"parentesco_fam"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"susceptible"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"calificacion"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"colegiatura"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tipoingreso"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"motingreso"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"reactivacion"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tposocio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inactivacion"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"dom_extranjero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"autorizacion"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"representante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tarjetadesc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ocupacion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"pais_cte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"recurso"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"titular"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nombre_titular"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numtitular"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"titular2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"nombre_titular2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"numtitular2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"fecha_alta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19/03/2019"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
 </span></code></pre></div>
-<p>Endpoint para consultar los datos de un cliente en especifico</p>
+<p>This endpoint is used for STP to notify the status of the account, You should implement an endpoint like this.</p>
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://dev.ictineo.com/clients/&lt;CLIENT_NUMBER&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='attributes'>Attributes</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -624,384 +656,333 @@ let max = api.kittens.get(2);
 <td>El numero de cliente que se quiere consultar.</td>
 </tr>
 </tbody></table>
-<h1 id='cuentas'>Cuentas</h1><h2 id='creacion-de-cuenta'>Creación de cuenta</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/accounts"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"numcte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001001131"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cuenta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000006764"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cuentaclabe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"646180123310006764"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"respcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"resptext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alta de cuenta exitosa"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para creación de una cuenta de captación</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://dev.ictineo.com/accounts</code></p>
-<h3 id='envio-de-parametros-2'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>client_number</td>
-<td>si</td>
-<td>Numero de cliente al que se le creara la cuenta</td>
-</tr>
-<tr>
-<td>product_id</td>
-<td>si</td>
-<td>Id del producto de cuenta que se le asignara</td>
-</tr>
-</tbody></table>
-<h2 id='consulta-de-saldo'>Consulta de saldo</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/accounts/10000006764/balance"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"vcod_ret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vcuenta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000006764"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vnum_cte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001001131"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vapell_pat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEJEDA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vapell_mat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GONZALEZ"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vnombre1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARO"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vnombre2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLO"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vrazon_soc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vedo_cta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_disp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_ret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_ccc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_disp_ccc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_cta"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vtipo_linea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vdescrip1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000 CUENTA EJE"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vdescrip2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 Peso Mexicano"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_t1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vsdo_cong"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vimp_chq_sbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vusubloq"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vfecbloq"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vnum_tarjeta"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"vcta_clabe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"646180123310006764"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para consultar el saldo de una cuenta en especifico</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://dev.ictineo.com/accounts/&lt;account&gt;/balance</code></p>
-<h3 id='envio-de-parametros-3'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>account</td>
-<td>si</td>
-<td>Numero de cuenta</td>
-</tr>
-</tbody></table>
-<h2 id='consulta-de-transacciones'>Consulta de transacciones</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/accounts/10000006764/transactions?dateIni=05/01/2020&amp;dateEnd=05/30/2020"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para consultar las transacciones de una cuenta en especifico</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://dev.ictineo.com/accounts/&lt;account&gt;/transactions?dateIni=&lt;dateIni&gt;&amp;dateEnd=&lt;dateEnd&gt;</code></p>
-<h3 id='envio-de-parametros-4'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>account</td>
-<td>si</td>
-<td>Numero de cuenta</td>
-</tr>
-<tr>
-<td>dateIni</td>
-<td>no</td>
-<td>Fecha de inicio para filtro de transacciones</td>
-</tr>
-<tr>
-<td>dateEnd</td>
-<td>no</td>
-<td>Fecha de fin para inicio de transacciones</td>
-</tr>
-</tbody></table>
-<h1 id='tarjetas'>Tarjetas</h1><h2 id='asignacion-de-tarjeta'>Asignación de tarjeta</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/card/active"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"(expression 1)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"(expression 2)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5064600000000462"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para asignación de tarjeta de debito a una cuenta en especifico</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST https://dev.ictineo.com/card/active</code></p>
-<h3 id='envio-de-parametros-5'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>account</td>
-<td>si</td>
-<td>Numero de cuenta a la que se le asignara la cuenta.</td>
-</tr>
-<tr>
-<td>product_id</td>
-<td>si</td>
-<td>Id del producto de cuenta que tiene asignado.</td>
-</tr>
-<tr>
-<td>product_card_id</td>
-<td>si</td>
-<td>Id del producto de tarjeta que se le asignara.</td>
-</tr>
-<tr>
-<td>card_number</td>
-<td>no</td>
-<td>Se le puede enviar el numero de tarjeta a asignar o si se envia vacio se asigna una tarjeta del stock.</td>
-</tr>
-</tbody></table>
-<h2 id='cambio-de-estatus'>Cambio de estatus</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/card/status"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"(expression 1)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para cambio de estatus de una tarjeta en especifico</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST https://dev.ictineo.com/card/status</code></p>
-<h3 id='envio-de-parametros-6'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>card_number</td>
-<td>si</td>
-<td>Numero de tarjeta a la que se le cambiara el estatus.</td>
-</tr>
-<tr>
-<td>status</td>
-<td>si</td>
-<td>Tipos de estatus - A := Activa, I := Inactiva, E := Extravio, B := Bloqueada, F := Bloqueo Fraude, D := Dañada, P := Preventivo Fraude, C := Cancelada, X := Bloqueada por el cliente, R := Robo.</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>no</td>
-<td>Comentario sobre el cambio de estatus</td>
-</tr>
-</tbody></table>
-<h1 id='transferencias'>Transferencias</h1><h2 id='generar-transferencia'>Generar transferencia</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/transfers"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"ocodret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"omensaje"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESO SATISFACTORIO"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oimporte"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ofolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCAELECT124514"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para realizar transferencias a cuentas propias, cuentas de terceros y cuentas a otros bancos.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST https://dev.ictineo.com/transfers</code></p>
-<h3 id='envio-de-parametros-7'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>si</td>
-<td>Tipo de transferencia - thirdy := Transferencia a cuentas de terceros, accounts := Transferencia a cuentas propias, spei := Transferencia a otros bancos</td>
-</tr>
-<tr>
-<td>client_number</td>
-<td>si</td>
-<td>Numero de cliente que realizara la transferencia</td>
-</tr>
-<tr>
-<td>account_origin</td>
-<td>si</td>
-<td>Numero de cuenta origen</td>
-</tr>
-<tr>
-<td>account_destination</td>
-<td>si</td>
-<td>Numero de cuenta destino</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>si</td>
-<td>Monto que se enviara</td>
-</tr>
-<tr>
-<td>reference</td>
-<td>si</td>
-<td>Referencia de identificación de transferencia</td>
-</tr>
-<tr>
-<td>date</td>
-<td>si</td>
-<td>Fecha MM-DD-YYYY</td>
-</tr>
-<tr>
-<td>concept</td>
-<td>si</td>
-<td>Concepto de la transferencia</td>
-</tr>
-</tbody></table>
-<h1 id='catalogos'>Catalogos</h1><h2 id='general'>General</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dev.ictineo.com/catalog/4"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
-</code></pre></div>
-<blockquote>
-<p>El comando anterior devuelve un JSON estructurado como:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta Exitosa"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"internalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"codret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sqlerr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"catalogo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdinteg:si_edocivil"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"codigo_descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLTERO(A)"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"codret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sqlerr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"catalogo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdinteg:si_edocivil"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"codigo_descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASADO(A)"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"codret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sqlerr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"catalogo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdinteg:si_edocivil"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"codigo_descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIVORCIADO(A)"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"codret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sqlerr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"catalogo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdinteg:si_edocivil"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"codigo_descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIUDO(A)"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"codret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sqlerr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"catalogo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdinteg:si_edocivil"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"codigo_descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNION LIBRE"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Endpoint para consultar los distintos catalogos para llenado de datos en creación de cliente</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST https://dev.ictineo.com/catalog/&lt;ID&gt;</code></p>
-<h3 id='envio-de-parametros-8'>Envío de parametros</h3>
-<table><thead>
-<tr>
-<th>Parametro</th>
-<th>Requerido</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>si</td>
-<td>Id del catalogo que se consultara</td>
-</tr>
-</tbody></table>
-<h1 id='errores'>Errores</h1>
-<!-- <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside> -->
 
-<p>El API Darwin utiliza los siguientes codigos de error:</p>
+<!-- # Cuentas
+
+## Creación de cuenta
+
+```shell
+curl "https://dev.ictineo.com/accounts"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": [
+        {
+            "numcte": "0001001131",
+            "cuenta": "10000006764",
+            "cuentaclabe": "646180123310006764",
+            "respcode": "000",
+            "resptext": "Alta de cuenta exitosa"
+        }
+    ]
+}
+```
+
+Endpoint para creación de una cuenta de captación
+
+### HTTP Request
+
+`POST https://dev.ictineo.com/accounts`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+client_number | si | Numero de cliente al que se le creara la cuenta
+product_id | si | Id del producto de cuenta que se le asignara 
+
+## Consulta de saldo
+
+```shell
+curl "https://dev.ictineo.com/accounts/10000006764/balance"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": [
+        {
+            "vcod_ret": "000",
+            "vcuenta": "10000006764",
+            "vnum_cte": "0001001131",
+            "vapell_pat": "TEJEDA",
+            "vapell_mat": "GONZALEZ",
+            "vnombre1": "CARO",
+            "vnombre2": "DOLO",
+            "vrazon_soc": "",
+            "vedo_cta": "0",
+            "vsdo_disp": 0,
+            "vsdo_ret": 0,
+            "vsdo_ccc": 0,
+            "vsdo_disp_ccc": 0,
+            "vsdo_cta": 0,
+            "vtipo_linea": "0",
+            "vdescrip1": "1000 CUENTA EJE",
+            "vdescrip2": "01 Peso Mexicano",
+            "vsdo_t1": 0,
+            "vsdo_cong": 0,
+            "vimp_chq_sbc": 0,
+            "vusubloq": "",
+            "vfecbloq": "",
+            "vnum_tarjeta": "",
+            "vcta_clabe": "646180123310006764"
+        }
+    ]
+}
+```
+
+Endpoint para consultar el saldo de una cuenta en especifico
+
+### HTTP Request
+
+`GET https://dev.ictineo.com/accounts/<account>/balance`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+account | si | Numero de cuenta
+
+## Consulta de transacciones
+
+```shell
+curl "https://dev.ictineo.com/accounts/10000006764/transactions?dateIni=05/01/2020&dateEnd=05/30/2020"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": []
+}
+```
+
+Endpoint para consultar las transacciones de una cuenta en especifico
+
+### HTTP Request
+
+`GET https://dev.ictineo.com/accounts/<account>/transactions?dateIni=<dateIni>&dateEnd=<dateEnd>`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+account | si | Numero de cuenta
+dateIni | no | Fecha de inicio para filtro de transacciones
+dateEnd | no | Fecha de fin para inicio de transacciones -->
+
+<!-- # Tarjetas
+
+## Asignación de tarjeta
+
+```shell
+curl "https://dev.ictineo.com/card/active"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": [
+        {
+            "(expression 1)": "000",
+            "(expression 2)": "5064600000000462"
+        }
+    ]
+}
+```
+
+Endpoint para asignación de tarjeta de debito a una cuenta en especifico
+
+### HTTP Request
+
+`POST https://dev.ictineo.com/card/active`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+account | si | Numero de cuenta a la que se le asignara la cuenta.
+product_id | si | Id del producto de cuenta que tiene asignado.
+product_card_id | si | Id del producto de tarjeta que se le asignara.
+card_number | no | Se le puede enviar el numero de tarjeta a asignar o si se envia vacio se asigna una tarjeta del stock.
+
+## Cambio de estatus
+
+```shell
+curl "https://dev.ictineo.com/card/status"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": [
+        {
+            "(expression 1)": "000"
+        }
+    ]
+}
+```
+
+Endpoint para cambio de estatus de una tarjeta en especifico
+
+### HTTP Request
+
+`POST https://dev.ictineo.com/card/status`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+card_number | si | Numero de tarjeta a la que se le cambiara el estatus.
+status | si | Tipos de estatus - A := Activa, I := Inactiva, E := Extravio, B := Bloqueada, F := Bloqueo Fraude, D := Dañada, P := Preventivo Fraude, C := Cancelada, X := Bloqueada por el cliente, R := Robo.
+comment | no | Comentario sobre el cambio de estatus
+
+
+# Transferencias
+
+## Generar transferencia
+
+```shell
+curl "https://dev.ictineo.com/transfers"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": [
+        {
+            "ocodret": "000",
+            "omensaje": "PROCESO SATISFACTORIO",
+            "oimporte": 5,
+            "ofolio": "BCAELECT124514"
+        }
+    ]
+}
+```
+
+Endpoint para realizar transferencias a cuentas propias, cuentas de terceros y cuentas a otros bancos.
+
+### HTTP Request
+
+`POST https://dev.ictineo.com/transfers`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+type | si | Tipo de transferencia - thirdy := Transferencia a cuentas de terceros, accounts := Transferencia a cuentas propias, spei := Transferencia a otros bancos 
+client_number | si | Numero de cliente que realizara la transferencia
+account_origin | si | Numero de cuenta origen
+account_destination | si | Numero de cuenta destino
+amount | si | Monto que se enviara
+reference | si | Referencia de identificación de transferencia
+date | si | Fecha MM-DD-YYYY
+concept | si | Concepto de la transferencia -->
+
+<!-- # Catalogos
+
+## General
+
+```shell
+curl "https://dev.ictineo.com/catalog/4"
+  -H "Authorization: token"
+```
+
+> El comando anterior devuelve un JSON estructurado como:
+
+```json
+{
+    "status": "success",
+    "message": "Consulta Exitosa",
+    "internalCode": "000",
+    "data": [
+        {
+            "codret": 0,
+            "sqlerr": 0,
+            "catalogo": "bdinteg:si_edocivil",
+            "codigo_descripcion": "S",
+            "descripcion": "SOLTERO(A)"
+        },
+        {
+            "codret": 0,
+            "sqlerr": 0,
+            "catalogo": "bdinteg:si_edocivil",
+            "codigo_descripcion": "C",
+            "descripcion": "CASADO(A)"
+        },
+        {
+            "codret": 0,
+            "sqlerr": 0,
+            "catalogo": "bdinteg:si_edocivil",
+            "codigo_descripcion": "D",
+            "descripcion": "DIVORCIADO(A)"
+        },
+        {
+            "codret": 0,
+            "sqlerr": 0,
+            "catalogo": "bdinteg:si_edocivil",
+            "codigo_descripcion": "V",
+            "descripcion": "VIUDO(A)"
+        },
+        {
+            "codret": 0,
+            "sqlerr": 0,
+            "catalogo": "bdinteg:si_edocivil",
+            "codigo_descripcion": "U",
+            "descripcion": "UNION LIBRE"
+        }
+    ]
+}
+```
+
+Endpoint para consultar los distintos catalogos para llenado de datos en creación de cliente
+
+### HTTP Request
+
+`POST https://dev.ictineo.com/catalog/<ID>`
+
+### Envío de parametros
+
+Parametro | Requerido | Descripción
+--------- | ------- | -----------
+id | si | Id del catalogo que se consultara -->
+<h1 id='errores'>Errores</h1>
+<aside class="notice">
+Ictineo uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Ictineo servers (these are rare).
+</aside>
+
+<p>HTTP STATUS CODE SUMMARY</p>
 
 <table><thead>
 <tr>
@@ -1010,44 +991,24 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Su solicitud no es valida.</td>
-</tr>
-<tr>
 <td>401</td>
-<td>Unauthorized -- Autorización incorrecta</td>
+<td>Unauthorized</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found - The resource you are trying to access cannot be found</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>409</td>
+<td>Conflict - A conflict occurred on the server while processing your request</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Internal Server Error - A serious error occurred on the server, please try again later</td>
 </tr>
 </tbody></table>
 
