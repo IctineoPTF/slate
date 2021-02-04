@@ -241,7 +241,22 @@
             <a href="#credencial" class="toc-h1 toc-link" data-title="Credencial">Credencial</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#assign-card" class="toc-h2 toc-link" data-title="Assign Card">Assign Card</a>
+                    <a href="#card-assign" class="toc-h2 toc-link" data-title="Card Assign">Card Assign</a>
+                  </li>
+                  <li>
+                    <a href="#card-balance" class="toc-h2 toc-link" data-title="Card Balance">Card Balance</a>
+                  </li>
+                  <li>
+                    <a href="#card-status" class="toc-h2 toc-link" data-title="Card Status">Card Status</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-card-status" class="toc-h2 toc-link" data-title="Update a Card Status">Update a Card Status</a>
+                  </li>
+                  <li>
+                    <a href="#initial-nip-of-card" class="toc-h2 toc-link" data-title="Initial NIP of Card">Initial NIP of Card</a>
+                  </li>
+                  <li>
+                    <a href="#update-nip-of-card" class="toc-h2 toc-link" data-title="Update NIP of Card">Update NIP of Card</a>
                   </li>
               </ul>
           </li>
@@ -732,7 +747,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='credencial'>Credencial</h1><h2 id='assign-card'>Assign Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/nomination/:card_number <span class="se">\</span>
+<h1 id='credencial'>Credencial</h1><h2 id='card-assign'>Card Assign</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/nomination/:card_number <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">account_number</span><span class="o">=</span>53234334 <span class="se">\</span>
@@ -761,7 +776,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint is used to assign card to account.</p>
+<p>This endpoint is used to card assign to account.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST http://credencial.ictineoptf.com/v1/credencial/nomination/:card_number</code></p>
 <h3 id='parameters-3'>Parameters</h3>
@@ -901,327 +916,217 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>32145698777</td>
 </tr>
 </tbody></table>
-
-<!-- # Cuentas
-
-## Creación de cuenta
-
-```shell
-curl "https://dev.ictineo.com/accounts"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": [
-        {
-            "numcte": "0001001131",
-            "cuenta": "10000006764",
-            "cuentaclabe": "646180123310006764",
-            "respcode": "000",
-            "resptext": "Alta de cuenta exitosa"
-        }
-    ]
-}
-```
-
-Endpoint para creación de una cuenta de captación
-
-### HTTP Request
-
-`POST https://dev.ictineo.com/accounts`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-client_number | si | Numero de cliente al que se le creara la cuenta
-product_id | si | Id del producto de cuenta que se le asignara 
-
-## Consulta de saldo
-
-```shell
-curl "https://dev.ictineo.com/accounts/10000006764/balance"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": [
-        {
-            "vcod_ret": "000",
-            "vcuenta": "10000006764",
-            "vnum_cte": "0001001131",
-            "vapell_pat": "TEJEDA",
-            "vapell_mat": "GONZALEZ",
-            "vnombre1": "CARO",
-            "vnombre2": "DOLO",
-            "vrazon_soc": "",
-            "vedo_cta": "0",
-            "vsdo_disp": 0,
-            "vsdo_ret": 0,
-            "vsdo_ccc": 0,
-            "vsdo_disp_ccc": 0,
-            "vsdo_cta": 0,
-            "vtipo_linea": "0",
-            "vdescrip1": "1000 CUENTA EJE",
-            "vdescrip2": "01 Peso Mexicano",
-            "vsdo_t1": 0,
-            "vsdo_cong": 0,
-            "vimp_chq_sbc": 0,
-            "vusubloq": "",
-            "vfecbloq": "",
-            "vnum_tarjeta": "",
-            "vcta_clabe": "646180123310006764"
-        }
-    ]
-}
-```
-
-Endpoint para consultar el saldo de una cuenta en especifico
-
-### HTTP Request
-
-`GET https://dev.ictineo.com/accounts/<account>/balance`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-account | si | Numero de cuenta
-
-## Consulta de transacciones
-
-```shell
-curl "https://dev.ictineo.com/accounts/10000006764/transactions?dateIni=05/01/2020&dateEnd=05/30/2020"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": []
-}
-```
-
-Endpoint para consultar las transacciones de una cuenta en especifico
-
-### HTTP Request
-
-`GET https://dev.ictineo.com/accounts/<account>/transactions?dateIni=<dateIni>&dateEnd=<dateEnd>`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-account | si | Numero de cuenta
-dateIni | no | Fecha de inicio para filtro de transacciones
-dateEnd | no | Fecha de fin para inicio de transacciones -->
-
-<!-- # Tarjetas
-
-## Asignación de tarjeta
-
-```shell
-curl "https://dev.ictineo.com/card/active"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": [
-        {
-            "(expression 1)": "000",
-            "(expression 2)": "5064600000000462"
-        }
-    ]
-}
-```
-
-Endpoint para asignación de tarjeta de debito a una cuenta en especifico
-
-### HTTP Request
-
-`POST https://dev.ictineo.com/card/active`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-account | si | Numero de cuenta a la que se le asignara la cuenta.
-product_id | si | Id del producto de cuenta que tiene asignado.
-product_card_id | si | Id del producto de tarjeta que se le asignara.
-card_number | no | Se le puede enviar el numero de tarjeta a asignar o si se envia vacio se asigna una tarjeta del stock.
-
-## Cambio de estatus
-
-```shell
-curl "https://dev.ictineo.com/card/status"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": [
-        {
-            "(expression 1)": "000"
-        }
-    ]
-}
-```
-
-Endpoint para cambio de estatus de una tarjeta en especifico
-
-### HTTP Request
-
-`POST https://dev.ictineo.com/card/status`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-card_number | si | Numero de tarjeta a la que se le cambiara el estatus.
-status | si | Tipos de estatus - A := Activa, I := Inactiva, E := Extravio, B := Bloqueada, F := Bloqueo Fraude, D := Dañada, P := Preventivo Fraude, C := Cancelada, X := Bloqueada por el cliente, R := Robo.
-comment | no | Comentario sobre el cambio de estatus
-
-
-# Transferencias
-
-## Generar transferencia
-
-```shell
-curl "https://dev.ictineo.com/transfers"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": [
-        {
-            "ocodret": "000",
-            "omensaje": "PROCESO SATISFACTORIO",
-            "oimporte": 5,
-            "ofolio": "BCAELECT124514"
-        }
-    ]
-}
-```
-
-Endpoint para realizar transferencias a cuentas propias, cuentas de terceros y cuentas a otros bancos.
-
-### HTTP Request
-
-`POST https://dev.ictineo.com/transfers`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-type | si | Tipo de transferencia - thirdy := Transferencia a cuentas de terceros, accounts := Transferencia a cuentas propias, spei := Transferencia a otros bancos 
-client_number | si | Numero de cliente que realizara la transferencia
-account_origin | si | Numero de cuenta origen
-account_destination | si | Numero de cuenta destino
-amount | si | Monto que se enviara
-reference | si | Referencia de identificación de transferencia
-date | si | Fecha MM-DD-YYYY
-concept | si | Concepto de la transferencia -->
-
-<!-- # Catalogos
-
-## General
-
-```shell
-curl "https://dev.ictineo.com/catalog/4"
-  -H "Authorization: token"
-```
-
-> El comando anterior devuelve un JSON estructurado como:
-
-```json
-{
-    "status": "success",
-    "message": "Consulta Exitosa",
-    "internalCode": "000",
-    "data": [
-        {
-            "codret": 0,
-            "sqlerr": 0,
-            "catalogo": "bdinteg:si_edocivil",
-            "codigo_descripcion": "S",
-            "descripcion": "SOLTERO(A)"
-        },
-        {
-            "codret": 0,
-            "sqlerr": 0,
-            "catalogo": "bdinteg:si_edocivil",
-            "codigo_descripcion": "C",
-            "descripcion": "CASADO(A)"
-        },
-        {
-            "codret": 0,
-            "sqlerr": 0,
-            "catalogo": "bdinteg:si_edocivil",
-            "codigo_descripcion": "D",
-            "descripcion": "DIVORCIADO(A)"
-        },
-        {
-            "codret": 0,
-            "sqlerr": 0,
-            "catalogo": "bdinteg:si_edocivil",
-            "codigo_descripcion": "V",
-            "descripcion": "VIUDO(A)"
-        },
-        {
-            "codret": 0,
-            "sqlerr": 0,
-            "catalogo": "bdinteg:si_edocivil",
-            "codigo_descripcion": "U",
-            "descripcion": "UNION LIBRE"
-        }
-    ]
-}
-```
-
-Endpoint para consultar los distintos catalogos para llenado de datos en creación de cliente
-
-### HTTP Request
-
-`POST https://dev.ictineo.com/catalog/<ID>`
-
-### Envío de parametros
-
-Parametro | Requerido | Descripción
---------- | ------- | -----------
-id | si | Id del catalogo que se consultara -->
+<h2 id='card-balance'>Card Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/balance <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">transaction_id</span><span class="o">=</span><span class="s2">"1560529031736"</span>
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to retrieve a card balance.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/balance</code></p>
+<h3 id='parameters-4'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>Y</td>
+<td>String</td>
+<td>Transaction identifier</td>
+<td>1560529031736</td>
+</tr>
+</tbody></table>
+<h2 id='card-status'>Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to review card status. Retrieves the card status with the given Account number.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status</code></p>
+<h3 id='parameters-5'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h2 id='update-a-card-status'>Update a Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">status</span><span class="o">=</span><span class="s2">"01"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to update a card status.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status</code></p>
+<h3 id='parameters-6'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>String</td>
+<td>Card status code to which you want to update</td>
+<td>01</td>
+</tr>
+</tbody></table>
+<h2 id='initial-nip-of-card'>Initial NIP of Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/initial_nip <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">transaction_id</span><span class="o">=</span><span class="s2">"1560529031736"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_expiration</span><span class="o">=</span><span class="s2">"1221"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_security_code</span><span class="o">=</span>1234 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_nip</span><span class="o">=</span><span class="s2">"7563"</span>
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to initial NIP of card.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/initial_nip</code></p>
+<h3 id='parameters-7'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>Y</td>
+<td>String</td>
+<td>Transaction identifier</td>
+<td>1560529031736</td>
+</tr>
+<tr>
+<td>card_expiration</td>
+<td>Y</td>
+<td>String</td>
+<td>Card expiration date. Format MMYY</td>
+<td>1221</td>
+</tr>
+<tr>
+<td>card_security_code</td>
+<td>Y</td>
+<td>Integer</td>
+<td>Card CVC</td>
+<td>1234</td>
+</tr>
+<tr>
+<td>card_nip</td>
+<td>Y</td>
+<td>String</td>
+<td>Initial NIP of card</td>
+<td>7563</td>
+</tr>
+</tbody></table>
+<h2 id='update-nip-of-card'>Update NIP of Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/update_nip <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">transaction_id</span><span class="o">=</span><span class="s2">"1560529031736"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_expiration</span><span class="o">=</span><span class="s2">"1221"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_security_code</span><span class="o">=</span>1234 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_nip_actual</span><span class="o">=</span><span class="s2">"7563"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_nip_new</span><span class="o">=</span><span class="s2">"1111"</span>
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to update NIP of card.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/update_nip</code></p>
+<h3 id='parameters-8'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>Y</td>
+<td>String</td>
+<td>Transaction identifier</td>
+<td>1560529031736</td>
+</tr>
+<tr>
+<td>card_expiration</td>
+<td>Y</td>
+<td>String</td>
+<td>Card expiration date. Format MMYY</td>
+<td>1221</td>
+</tr>
+<tr>
+<td>card_security_code</td>
+<td>Y</td>
+<td>Integer</td>
+<td>Card CVC</td>
+<td>1234</td>
+</tr>
+<tr>
+<td>card_nip_actual</td>
+<td>Y</td>
+<td>String</td>
+<td>Actual NIP of card</td>
+<td>7563</td>
+</tr>
+<tr>
+<td>card_nip_new</td>
+<td>Y</td>
+<td>String</td>
+<td>New NIP of card</td>
+<td>1111</td>
+</tr>
+</tbody></table>
 <h1 id='errores'>Errores</h1>
 <aside class="notice">
 Ictineo uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Ictineo servers (these are rare).
