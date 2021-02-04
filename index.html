@@ -224,10 +224,16 @@
                     <a href="#create-a-clabe-account-physical-accounts" class="toc-h2 toc-link" data-title="Create a CLABE account (Physical accounts)">Create a CLABE account (Physical accounts)</a>
                   </li>
                   <li>
-                    <a href="#webhook-to-create-a-clabe-account" class="toc-h2 toc-link" data-title="Webhook to create a CLABE account">Webhook to create a CLABE account</a>
+                    <a href="#webhook-of-clabe-status" class="toc-h2 toc-link" data-title="Webhook of CLABE status">Webhook of CLABE status</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-of-spei-in" class="toc-h2 toc-link" data-title="Webhook of SPEI IN">Webhook of SPEI IN</a>
                   </li>
                   <li>
                     <a href="#spei-out" class="toc-h2 toc-link" data-title="SPEI OUT">SPEI OUT</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-of-spei-out" class="toc-h2 toc-link" data-title="Webhook of SPEI OUT">Webhook of SPEI OUT</a>
                   </li>
               </ul>
           </li>
@@ -490,28 +496,16 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>5513673221</td>
 </tr>
 </tbody></table>
-<h2 id='webhook-to-create-a-clabe-account'>Webhook to create a CLABE account</h2>
-<!-- ```shell
-curl "https://dev.ictineo.com/clients/0001001131"
-  -H "Authorization: token"
-``` -->
-
-<!-- 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-``` -->
-
+<h2 id='webhook-of-clabe-status'>Webhook of CLABE status</h2>
 <blockquote>
-<p>RESPONSE</p>
+<p>The webhook endpoint object</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"clabe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"646180123300000408"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used for STP to notify the status of the account, You should implement an endpoint like this.</p>
-
-<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 <h3 id='attributes'>Attributes</h3>
 <table><thead>
 <tr>
@@ -532,6 +526,45 @@ let max = api.kittens.get(2);
 <td>String</td>
 <td>The status type of the CLABE account. Values: Active -&gt; 1, Inactive -&gt; 0</td>
 <td>1</td>
+</tr>
+</tbody></table>
+<h2 id='webhook-of-spei-in'>Webhook of SPEI IN</h2>
+<blockquote>
+<p>The webhook endpoint object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"clabe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"646180123300000408"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MBAN000000212"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.50"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used for STP to notify a SPEI IN, You should implement an endpoint like this.</p>
+<h3 id='attributes-2'>Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clabe</td>
+<td>String</td>
+<td>The CLABE account of beneficiary</td>
+<td>646420123300000000</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Tracking key associated with the payment order. It must be unique</td>
+<td>MBAN000000212</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Amount of the payment order</td>
+<td>MBAN000000212</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='spei-out'>SPEI OUT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
@@ -560,7 +593,7 @@ let max = api.kittens.get(2);
   </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/stp/clabes"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint is used to register an order to SPEI out</p>
+<p>This endpoint is used to register an order to SPEI OUT</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://stp.ictineoptf.com/v1/stp/transfer</code></p>
 <h3 id='parameters-2'>Parameters</h3>
@@ -649,6 +682,46 @@ let max = api.kittens.get(2);
 <td>String</td>
 <td>Company Name</td>
 <td>ICTINEO</td>
+</tr>
+</tbody></table>
+<h2 id='webhook-of-spei-out'>Webhook of SPEI OUT</h2>
+<blockquote>
+<p>The webhook endpoint object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8610843</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"folio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ICTINEO000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liquidación"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used for STP to notify the status of an order for SPEI OUT, You should implement an endpoint like this.</p>
+<h3 id='attributes-3'>Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clabe</td>
+<td>String</td>
+<td>The CLABE account of beneficiary</td>
+<td>646420123300000000</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Tracking key associated with the payment order. It must be unique</td>
+<td>MBAN000000212</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Amount of the payment order</td>
+<td>MBAN000000212</td>
+<td></td>
 </tr>
 </tbody></table>
 
