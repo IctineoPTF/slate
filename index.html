@@ -238,6 +238,14 @@
               </ul>
           </li>
           <li>
+            <a href="#credencial" class="toc-h1 toc-link" data-title="Credencial">Credencial</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#assign-card" class="toc-h2 toc-link" data-title="Assign Card">Assign Card</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errores" class="toc-h1 toc-link" data-title="Errores">Errores</a>
           </li>
       </ul>
@@ -722,6 +730,175 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>Amount of the payment order</td>
 <td>MBAN000000212</td>
 <td></td>
+</tr>
+</tbody></table>
+<h1 id='credencial'>Credencial</h1><h2 id='assign-card'>Assign Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/nomination/:card_number <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">account_number</span><span class="o">=</span>53234334 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">account_id</span><span class="o">=</span>13332233 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_name</span><span class="o">=</span><span class="s2">"Oswaldo Lopez"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">full_name</span><span class="o">=</span><span class="s2">"Oswaldo Lopez Garcia"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">birth_date</span><span class="o">=</span><span class="s2">"1986-10-10"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">gender</span><span class="o">=</span><span class="s2">"M"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">civil_status</span><span class="o">=</span><span class="s2">"S"</span>
+  <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span><span class="s2">"persona@dominio.com"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">phone</span><span class="o">=</span>5511456745 <span class="se">\ </span> 
+  <span class="nt">-d</span> <span class="s2">"address[type]"</span><span class="o">=</span><span class="s2">"casa"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[street]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[number]"</span><span class="o">=</span><span class="s2">"24"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[country]"</span><span class="o">=</span>32 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[state]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[suburb]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[zip_code]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"document[type]"</span><span class="o">=</span><span class="s2">"DNI"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"document[number]"</span><span class="o">=</span><span class="s2">"32145698777"</span> <span class="se">\ </span> 
+</code></pre></div>
+<blockquote>
+<p>RESPONSE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to assign card to account.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://credencial.ictineoptf.com/v1/credencial/nomination/:card_number</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_number</td>
+<td>Y</td>
+<td>String</td>
+<td>Account number</td>
+<td>53234334</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td>Y</td>
+<td>String</td>
+<td>Account number identifier</td>
+<td>13332233</td>
+</tr>
+<tr>
+<td>card_name</td>
+<td>Y</td>
+<td>String</td>
+<td>Usually name of cardholder. It&#39;s the name printed on the plastic.</td>
+<td>Oswaldo Lopez</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>Y</td>
+<td>String</td>
+<td>Name of cardholder</td>
+<td>Oswaldo Lopez Garcia</td>
+</tr>
+<tr>
+<td>birth_date</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder date of birth</td>
+<td>1986-10-10</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder gender</td>
+<td>M</td>
+</tr>
+<tr>
+<td>civil_status</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder civil status</td>
+<td>S</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Y</td>
+<td>String</td>
+<td>Email address</td>
+<td>persona@dominio.com</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Y</td>
+<td>String</td>
+<td>Phone number</td>
+<td>5511456745</td>
+</tr>
+<tr>
+<td>address[type]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder type of address</td>
+<td>casa</td>
+</tr>
+<tr>
+<td>address[street]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder street of address</td>
+<td>3313476042</td>
+</tr>
+<tr>
+<td>address[number]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder number of address</td>
+<td>24</td>
+</tr>
+<tr>
+<td>address[country]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder country of address. ISO code</td>
+<td>32</td>
+</tr>
+<tr>
+<td>address[state]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder state of address</td>
+<td></td>
+</tr>
+<tr>
+<td>address[suburb]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder suburb of address</td>
+<td>Lomas de chapultepec</td>
+</tr>
+<tr>
+<td>address[zip_code]</td>
+<td>Y</td>
+<td>String</td>
+<td>Cardholder postal code of address</td>
+<td>01100</td>
+</tr>
+<tr>
+<td>document[type]</td>
+<td>Y</td>
+<td>String</td>
+<td>Phone number of the physical person</td>
+<td>DNI</td>
+</tr>
+<tr>
+<td>document[number]</td>
+<td>Y</td>
+<td>String</td>
+<td>Phone number of the physical person</td>
+<td>32145698777</td>
 </tr>
 </tbody></table>
 
