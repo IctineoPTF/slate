@@ -281,12 +281,12 @@ En la autentificación se utilizan mensajes en clave-hash (HMAC) es una construc
 function getPath(url) {
     var pathRegex = /.+?\:\/\/.+?(\/.+?)(?:#|\?|$)/;
     var result = url.match(pathRegex);
-    return result && result.length > 1 ? result[1] : ''; 
+    return result && result.length > 1 ? result[1] : '';
 }
 
 function getQueryString(url) {
     var arrSplit = url.split('?');
-    return arrSplit.length > 1 ? url.substring(url.indexOf('?')+1) : ''; 
+    return arrSplit.length > 1 ? url.substring(url.indexOf('?')+1) : '';
 }
 
 var _requestData;
@@ -300,15 +300,15 @@ function getAuthHeader(httpMethod, requestUrl, _requestBody) {
     var requestPath = getPath(requestUrl);
     var queryString = getQueryString(requestUrl);
     if (httpMethod == 'GET' || !_requestBody) {
-        requestBody = ''; 
+        requestBody = '';
     } else {
         requestBody = JSON.stringify(JSON.parse(_requestBody) );
     }
-        
-    var timestamp = new Date().getTime(); 
+
+    var timestamp = new Date().getTime();
     var requestData = [timestamp,httpMethod, requestPath, queryString, requestBody].join("");
     requestData = requestData.trim();
-    _requestData = requestData;        
+    _requestData = requestData;
     var hmacDigest = CryptoJS.enc.Hex.stringify(CryptoJS.HmacSHA256(requestData, SECRET_KEY));
     var authHeader = AUTH_TYPE + ' ' + CLIENT_KEY + ':'+ timestamp + ":"  + hmacDigest;
     return authHeader;
@@ -318,7 +318,7 @@ postman.setEnvironmentVariable('hmacAuthHeader', getAuthHeader(request['method']
 postman.setEnvironmentVariable('hmac_d',_requestData);
 ``` -->
 
-<!-- 
+<!--
 // > Make sure to replace `meowmeowmeow` with your API key.
 
 // Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
@@ -330,7 +330,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 // <aside class="notice">
 // You must replace <code>meowmeowmeow</code> with your personal API key.
 // </aside>  -->
-<h1 id='stp'>STP</h1><h2 id='create-a-clabe-account-physical-accounts'>Create a CLABE account (Physical accounts)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
+<h1 id='stp'>STP</h1><h2 id='create-a-clabe-account-physical-accounts'>Create a CLABE account (Physical accounts)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/stp/clabes <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">enterprise_id</span><span class="o">=</span><span class="s2">"6c4a-ye2y-23h2-y38g"</span> <span class="se">\</span>
@@ -367,7 +367,8 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to create CLABE account(Physical accounts).</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://stp.ictineoptf.com/v1/stp/clabes</code></p>
+<p><code>PROD POST https://stp.ictineoptf.com/stp/clabes</code>
+<code>DEV POST https://dev-stp.ictineoptf.com/stp/clabes</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -590,7 +591,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='spei-out'>SPEI OUT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/v1/stp/clabes <span class="se">\</span>
+<h2 id='spei-out'>SPEI OUT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://stp.ictineoptf.com/stp/clabes <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">payer_account</span><span class="o">=</span><span class="s2">"646420123300000000"</span> <span class="se">\</span>
@@ -618,7 +619,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to register an order to SPEI OUT</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://stp.ictineoptf.com/v1/stp/transfer</code></p>
+<p><code>POST https://stp.ictineoptf.com/stp/transfer</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -758,7 +759,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
   <span class="nt">-d</span> <span class="nv">gender</span><span class="o">=</span><span class="s2">"M"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">civil_status</span><span class="o">=</span><span class="s2">"S"</span>
   <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span><span class="s2">"persona@dominio.com"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">phone</span><span class="o">=</span>5511456745 <span class="se">\ </span> 
+  <span class="nt">-d</span> <span class="nv">phone</span><span class="o">=</span>5511456745 <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"address[type]"</span><span class="o">=</span><span class="s2">"casa"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"address[street]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"address[number]"</span><span class="o">=</span><span class="s2">"24"</span> <span class="se">\</span>
@@ -767,14 +768,12 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
   <span class="nt">-d</span> <span class="s2">"address[suburb]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"address[zip_code]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"document[type]"</span><span class="o">=</span><span class="s2">"DNI"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"document[number]"</span><span class="o">=</span><span class="s2">"32145698777"</span> <span class="se">\ </span> 
+  <span class="nt">-d</span> <span class="s2">"document[number]"</span><span class="o">=</span><span class="s2">"32145698777"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
 <p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to card assign to account.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
@@ -924,9 +923,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <blockquote>
 <p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to retrieve a card balance.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
@@ -954,9 +951,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <blockquote>
 <p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to review card status. Retrieves the card status with the given Account number.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
@@ -980,9 +975,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <blockquote>
 <p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to update a card status.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
@@ -1016,9 +1009,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <blockquote>
 <p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to initial NIP of card.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
@@ -1074,9 +1065,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <blockquote>
 <p>RESPONSE</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to update NIP of card.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
