@@ -244,9 +244,6 @@
                     <a href="#card-assign" class="toc-h2 toc-link" data-title="Card Assign">Card Assign</a>
                   </li>
                   <li>
-                    <a href="#card-balance" class="toc-h2 toc-link" data-title="Card Balance">Card Balance</a>
-                  </li>
-                  <li>
                     <a href="#card-status" class="toc-h2 toc-link" data-title="Card Status">Card Status</a>
                   </li>
                   <li>
@@ -916,37 +913,6 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>32145698777</td>
 </tr>
 </tbody></table>
-<h2 id='card-balance'>Card Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/balance <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">transaction_id</span><span class="o">=</span><span class="s2">"1560529031736"</span>
-</code></pre></div>
-<blockquote>
-<p>RESPONSE</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint is used to retrieve a card balance.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/balance</code></p>
-<h3 id='parameters-4'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transaction_id</td>
-<td>Y</td>
-<td>String</td>
-<td>Transaction identifier</td>
-<td>1560529031736</td>
-</tr>
-</tbody></table>
 <h2 id='card-status'>Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status
 </code></pre></div>
 <blockquote>
@@ -955,9 +921,9 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to review card status. Retrieves the card status with the given Account number.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status</code></p>
-<h3 id='parameters-5'>Parameters</h3>
+<h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -979,9 +945,9 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to update a card status.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>PUT http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/status</code></p>
-<h3 id='parameters-6'>Parameters</h3>
+<h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1013,9 +979,9 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to initial NIP of card.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/initial_nip</code></p>
-<h3 id='parameters-7'>Parameters</h3>
+<h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1069,9 +1035,9 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint is used to update NIP of card.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST http://credencial.ictineoptf.com/v1/credencial/cards/:account_number/update_nip</code></p>
-<h3 id='parameters-8'>Parameters</h3>
+<h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
