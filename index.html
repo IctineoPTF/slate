@@ -255,6 +255,9 @@
                   <li>
                     <a href="#update-nip-of-card" class="toc-h2 toc-link" data-title="Update NIP of Card">Update NIP of Card</a>
                   </li>
+                  <li>
+                    <a href="#webhook-of-debit-card" class="toc-h2 toc-link" data-title="Webhook of DEBIT card">Webhook of DEBIT card</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1081,6 +1084,150 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>String</td>
 <td>New NIP of card</td>
 <td>1111</td>
+</tr>
+</tbody></table>
+<h2 id='webhook-of-debit-card'>Webhook of DEBIT card</h2>
+<blockquote>
+<p>The webhook endpoint object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"emi_account_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001003143"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"emi_account_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21000002159"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">544802938</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="mi">840</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_liq"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency_liq"</span><span class="p">:</span><span class="w"> </span><span class="mi">484</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identifier_adq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"commission_liq"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MASTER_ATM"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"acquirer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18/12/2012 03:29:30 PM"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trade_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"?"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used for Credencial to notify the Debit of card, You should implement an endpoint like this.</p>
+<h3 id='attributes-4'>Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>emi_account_reference</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emi_account_identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>account_number</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>currency</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>amount_liq</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>currency_liq</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>identifier_adq</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>reference</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>commission</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>commission_liq</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>origin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>reason</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>acquirer</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>terminal</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>trade_name</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='errores'>Errores</h1>
