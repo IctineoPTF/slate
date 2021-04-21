@@ -761,22 +761,22 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <h1 id='credencial'>Credencial</h1><h2 id='card-assign'>Card Assign</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/v1/credencial/nomination/:card_number <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">account_number</span><span class="o">=</span>53234334 <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">account_id</span><span class="o">=</span>13332233 <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">card_name</span><span class="o">=</span><span class="s2">"Oswaldo Lopez"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">full_name</span><span class="o">=</span><span class="s2">"Oswaldo Lopez Garcia"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">emi_account_reference</span><span class="o">=</span><span class="s2">"0001003143"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">emi_account_identifier</span><span class="o">=</span><span class="s2">"21000002159"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">card_name</span><span class="o">=</span><span class="s2">"Jose Lopez"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">full_name</span><span class="o">=</span><span class="s2">"Jose Lopez Garcia"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">birth_date</span><span class="o">=</span><span class="s2">"1986-10-10"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">gender</span><span class="o">=</span><span class="s2">"M"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">civil_status</span><span class="o">=</span><span class="s2">"S"</span>
   <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span><span class="s2">"persona@dominio.com"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="nv">phone</span><span class="o">=</span>5511456745 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">phone</span><span class="o">=</span><span class="s2">"5511456745"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"address[type]"</span><span class="o">=</span><span class="s2">"casa"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"address[street]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"address[number]"</span><span class="o">=</span><span class="s2">"24"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"address[country]"</span><span class="o">=</span>32 <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"address[state]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"address[suburb]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"address[zip_code]"</span><span class="o">=</span><span class="s2">""</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[street]"</span><span class="o">=</span><span class="s2">"Privada"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[country]"</span><span class="o">=</span>484 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[state]"</span><span class="o">=</span><span class="s2">"CDMX"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[suburb]"</span><span class="o">=</span><span class="s2">"Granjas"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[locality]"</span><span class="o">=</span><span class="s2">"Iztapalapa"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"address[zip_code]"</span><span class="o">=</span><span class="s2">"04056"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"document[type]"</span><span class="o">=</span><span class="s2">"DNI"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"document[number]"</span><span class="o">=</span><span class="s2">"32145698777"</span> <span class="se">\</span>
 </code></pre></div>
