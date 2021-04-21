@@ -758,7 +758,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='credencial'>Credencial</h1><h2 id='card-assign'>Card Assign</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credencial/nomination/:card_number <span class="se">\</span>
+<h1 id='credencial'>Credencial</h1><h2 id='card-assign'>Card Assign</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credential/nomination/:card_number <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">emi_account_reference</span><span class="o">=</span><span class="s2">"0001003143"</span> <span class="se">\</span>
@@ -787,7 +787,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to card assign to account.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST http://credencial.ictineoptf.com/credencial/nomination/:card_number</code></p>
+<p><code>POST http://credencial.ictineoptf.com/credential/nomination/:card_number</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -925,7 +925,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>32145698777</td>
 </tr>
 </tbody></table>
-<h2 id='card-status'>Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credencial/cards/:account_number/status
+<h2 id='card-status'>Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credential/cards/:account_number/status
 </code></pre></div>
 <blockquote>
 <p>RESPONSE</p>
@@ -934,7 +934,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to review card status. Retrieves the card status with the given Account number.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://credencial.ictineoptf.com/credencial/cards/:account_number/status</code></p>
+<p><code>GET http://credencial.ictineoptf.com/credential/cards/:account_number/status</code></p>
 <h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
@@ -946,7 +946,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </tr>
 </thead><tbody>
 </tbody></table>
-<h2 id='update-a-card-status'>Update a Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credencial/cards/:account_number/status <span class="se">\</span>
+<h2 id='update-a-card-status'>Update a Card Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credential/cards/:account_number/status <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">status</span><span class="o">=</span><span class="s2">"01"</span> <span class="se">\</span>
@@ -958,7 +958,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to update a card status.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>PUT http://credencial.ictineoptf.com/credencial/cards/:account_number/status</code></p>
+<p><code>PUT http://credencial.ictineoptf.com/credential/cards/:account_number/status</code></p>
 <h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
@@ -977,7 +977,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>01</td>
 </tr>
 </tbody></table>
-<h2 id='initial-nip-of-card'>Initial NIP of Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credencial/cards/:account_number/initial_nip <span class="se">\</span>
+<h2 id='initial-nip-of-card'>Initial NIP of Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credential/cards/:account_number/initial_nip <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">transaction_id</span><span class="o">=</span><span class="s2">"1560529031736"</span> <span class="se">\</span>
@@ -992,7 +992,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to initial NIP of card.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST http://credencial.ictineoptf.com/credencial/cards/:account_number/initial_nip</code></p>
+<p><code>POST http://credencial.ictineoptf.com/credential/cards/:account_number/initial_nip</code></p>
 <h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1032,7 +1032,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 <td>7563</td>
 </tr>
 </tbody></table>
-<h2 id='update-nip-of-card'>Update NIP of Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credencial/cards/:account_number/update_nip <span class="se">\</span>
+<h2 id='update-nip-of-card'>Update NIP of Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://credencial.ictineoptf.com/credential/cards/:account_number/update_nip <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"accept: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="nv">transaction_id</span><span class="o">=</span><span class="s2">"1560529031736"</span> <span class="se">\</span>
@@ -1048,7 +1048,7 @@ postman.setEnvironmentVariable('hmac_d',_requestData);
 </span></code></pre></div>
 <p>This endpoint is used to update NIP of card.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST http://credencial.ictineoptf.com/credencial/cards/:account_number/update_nip</code></p>
+<p><code>POST http://credencial.ictineoptf.com/credential/cards/:account_number/update_nip</code></p>
 <h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
